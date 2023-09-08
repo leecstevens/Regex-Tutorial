@@ -10,32 +10,30 @@ In this particulat example, I will be using this regex pattern to verify a line 
 
 We will have a few examples:
 
-Example 1: A datetime example:
-
-^\[\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2}?]
-
+### Example 1: A datetime example:
+```
+^\[\d{4}(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
 The above regex denotes a string in the file which will look like this:
-
 [2023-09-08 12:33:10]
-
-Example 2: A parsing of a display and user name:
-
+```
+### Example 2: A parsing of a display and user name:
+```
 .*?\((.*)\):
 
 The above regex parses a display name (Joe King) and optionally user name (joeking).  The string looks like this:
 
 Joe King (joeking)
-
-Example 3: Simple parsing if a user is online or offline:
-
+```
+### Example 3: Simple parsing if a user is online or offline:
+```
 (.*): is (off|on)line.
 
 The above is looking for a specific string whether a user has logged on or off, saying this isn't relevant to chat itself.
 
 The string looks like this:
 Joe King (joeking): is offline.
-
-I will be denoting the example in each of the below sections and how I use them.
+```
+> I will be denoting the example in each of the below sections and how I use them.
 
 ## Table of Contents
 
@@ -54,6 +52,16 @@ I will be denoting the example in each of the below sections and how I use them.
 ## Regex Components
 
 ### Anchors
+
+An anchor simply begins and ends a regular expression.  They aren't part of the string matching class, but define positions before, after, before and after, or even between characters.
+
+In example 1: The ^ symbol represents the start.  The lack of a $ to end denotes the regex anchor ends at the end.
+
+![](./img/ex17-01.jpg)
+
+> Examples 2 and 3 do not have anchors and are not required.
+
+![](./img/ex17-02.jpg)
 
 ### Quantifiers
 
