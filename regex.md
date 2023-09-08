@@ -177,6 +177,6 @@ Now, only edit is a match.
 
 ## Author
 
-This tutorial on regex brought to you by Lee Stevens [Repo](https://github.com/leecstevens).
+This tutorial on regex brought to you by Lee Stevens ([Repo](https://github.com/leecstevens)).
 
 

@@ -2,7 +2,7 @@
 
 GitHub Repo: https://github.com/leecstevens
 
-GitHub regex tutorial: 
+GitHub regex tutorial: https://github.com/leecstevens/bc-17-regex/blob/main/regex.md
 
 ## User Story
 
