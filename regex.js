@@ -13,5 +13,5 @@ for (i = 0; i < timestamps.length - 1; i++) {
         output = "Failed"
     }
 
-    console.log (`Matching ${timestamps[i]}`, `: ${output}`)
+    console.log (`Matching ${timestamps[i]}: ${output}`)
 }
