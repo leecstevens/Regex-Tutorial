@@ -1,10 +1,14 @@
-# Title (replace with your title)
+# RegEx Tutorial
 
-Introductory paragraph (replace this with your text)
+In this document, I will go over an example of a regex expression and how I broke it down.
+
+A regex, or "regular expression" is a method how you can match a pattern with a string.  It is meant to serve two main uses: 1. To verify input data (like email address or social security number), and 2. in code, verifying a string matches a specific pattern.
 
 ## Summary
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
+In this particulat example, I will be using this regex pattern to verify a line of text in a logfile:
+
+
 
 ## Table of Contents
 
