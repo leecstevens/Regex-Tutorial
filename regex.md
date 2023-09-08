@@ -6,9 +6,36 @@ A regex, or "regular expression" is a method how you can match a pattern with a 
 
 ## Summary
 
-In this particulat example, I will be using this regex pattern to verify a line of text in a logfile:
+In this particulat example, I will be using this regex pattern to verify a line of text in a chat log:
 
+We will have a few examples:
 
+Example 1: A datetime example:
+
+^\[\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2}?]
+
+The above regex denotes a string in the file which will look like this:
+
+[2023-09-08 12:33:10]
+
+Example 2: A parsing of a display and user name:
+
+.*?\((.*)\):
+
+The above regex parses a display name (Joe King) and optionally user name (joeking).  The string looks like this:
+
+Joe King (joeking)
+
+Example 3: Simple parsing if a user is online or offline:
+
+(.*): is (off|on)line.
+
+The above is looking for a specific string whether a user has logged on or off, saying this isn't relevant to chat itself.
+
+The string looks like this:
+Joe King (joeking): is offline.
+
+I will be denoting the example in each of the below sections and how I use them.
 
 ## Table of Contents
 
