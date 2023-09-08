@@ -4,9 +4,28 @@ In this document, I will go over an example of a regex expression and how I brok
 
 A regex, or "regular expression" is a method how you can match a pattern with a string.  It is meant to serve two main uses: 1. To verify input data (like email address or social security number), and 2. in code, verifying a string matches a specific pattern.
 
-## Summary
+## Table of Contents
+
+- [Summary](#summary)
+- [Anchors](#anchors)
+- [Quantifiers](#quantifiers)
+- [OR Operator](#or-operator)
+- [Character Classes](#character-classes)
+- [Flags](#flags)
+- [Grouping and Capturing](#grouping-and-capturing)
+- [Bracket Expressions](#bracket-expressions)
+- [Greedy and Lazy Match](#greedy-and-lazy-match)
+- [Boundaries](#boundaries)
+- [Back-references](#back-references)
+- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+- [Examples in JavaScript and Python](#bonus-code)
+
+# Summary
 
 In this particulat example, I will be using this regex pattern to verify a line of text in a chat log.  This log file contains a variety of types of data.
+
+## As a bonus
+> I will be adding JavaScript and Python code at the end to demonstrate and test the regex that is being presented at no additional charge to you.
 
 We will use 2 examples from this data:
 
@@ -34,20 +53,6 @@ The string looks like this:
 ```Joe King (joeking): is offline.```
 
 > I will be denoting the example in each of the below sections and how I used them.
-
-## Table of Contents
-
-- [Anchors](#anchors)
-- [Quantifiers](#quantifiers)
-- [OR Operator](#or-operator)
-- [Character Classes](#character-classes)
-- [Flags](#flags)
-- [Grouping and Capturing](#grouping-and-capturing)
-- [Bracket Expressions](#bracket-expressions)
-- [Greedy and Lazy Match](#greedy-and-lazy-match)
-- [Boundaries](#boundaries)
-- [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
 ## Regex Components
 
@@ -184,13 +189,20 @@ To flip this, doing a negative query by changing ```?=``` to ```?!```, the resul
 
 Now, only edit is a match.
 
-# Bonus
+# Bonus Code
 
 ## Detecting this regex with JavaScript
 > Included file: regex.js
 
+![](./img/regex-java.jpg)
 
+Using the above examples, the only test that would fail this regex is the second.  Why?  Becuse it is missing the required brackets.
 
+## Detecting this regex with Python
+> Included file: regex.py
+
+![](./img/regex-python.jpg)
+Same as the past example, but written in Python.  The second example fails as it is missing the brackets.
 
 ## Author
 
