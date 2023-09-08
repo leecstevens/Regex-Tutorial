@@ -15,7 +15,7 @@ We will have a few examples:
 ^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
 ```
 The above regex denotes a string in the file which will look like this:
-[2023-09-08 12:22:10]
+```[2023-09-08 12:22:10]```
 
 ### Example 2: Simple parsing if a user is online or offline:
 ```
@@ -24,7 +24,8 @@ The above regex denotes a string in the file which will look like this:
 The above is looking for a specific string whether a user has logged on or off, saying this isn't relevant to chat itself.
 
 The string looks like this:
-Joe King (joeking): is offline.
+
+```Joe King (joeking): is offline.```
 
 > I will be denoting the example in each of the below sections and how I used them.
 
@@ -48,7 +49,7 @@ Joe King (joeking): is offline.
 
 An anchor simply begins and ends a regular expression.  They aren't part of the string matching class, but define positions before, after, before and after, or even between characters.
 
-In example 1: The ^ symbol represents the start.  The lack of a $ to end denotes the regex anchor ends at the end.
+In example 1: The ```^``` symbol represents the start.  The lack of a ```$``` to end denotes the regex anchor ends at the end.
 
 ![](./img/ex17-01.jpg)
 
@@ -60,17 +61,17 @@ In example 1: The ^ symbol represents the start.  The lack of a $ to end denotes
 
 The quantifier states a count of qualifying characters or substrings must exist in order to make a match.
 
-In example 1, the "\d{4}" means that we MUST have a 4 digit year.
+In example 1, the ```\d{4}``` means that we MUST have a 4 digit year.
 
 So, 2023 is a match, but 23 would not be as it requires 4 digits.
 
 ### OR Operator
 
-To build on the last section, the OR operator is separated by a pipe ("|") character.
+To build on the last section, the OR operator is separated by a pipe ```|``` character.
 
 If I wanted to do 2 or 4 digit years as in the past example, the following regex grouping would provide a match either way:
 
-(\d{4}|\d{2})
+```(\d{4}|\d{2})```
 
 So either a 4 or 2 year date would be accepted: 
 
@@ -78,13 +79,13 @@ So either a 4 or 2 year date would be accepted:
 
 Same with Example 2, where it shows a user going ON line or OFF line.
 
-(.*): is (off|on)line.
+```(.*): is (off|on)line.```
 
 ![](./img/image-1.png)
 
 ### Character Classes
 
-A character class is a data type, as in the previous examples, we used a digit or \d, the "d" represents a digit (0..9) and is escaped by the backslash so that it is not interpreted for a literal "d" character.
+A character class is a data type, as in the previous examples, we used a digit or ```\d```, the ```"d"``` represents a digit (0..9) and is escaped by the backslash so that it is not interpreted for a literal ```"d"``` character.
 
 ### Flags
 
@@ -92,11 +93,11 @@ None of these are used in my examples, so I will drop one here.
 
 Flags are a way to add paramerers into your search.  I will use a case insensitive search as an example.
 
-To do a case insensitive search, use the (?i) before the text you are searching.  For example, the name Joe King in this search is case insensitive, so all 3 of these tests pass.
+To do a case insensitive search, use the ```(?i)``` before the text you are searching.  For example, the name ```Joe King``` in this search is case insensitive, so all 3 of these tests pass.
 
 ![](./img/image-2.png)
 
-I can use grouping to ensure that only say, "Joe" is case insensitive.
+I can use grouping to ensure that only say, ```"Joe"``` is case insensitive.
 
 ![](./img/image-3.png)
 
@@ -110,29 +111,29 @@ Example 1 uses 2 groupings right from the beginning:
 ```
 ^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
 ```
-(\d{4}|\d{2}) combines looking for digits, but requiring either 4 or 2 depending on year type.
+```(\d{4}|\d{2})``` combines looking for digits, but requiring either 4 or 2 depending on year type.
 
-(\/|-) separates the date string with a / or - and the \ exists as an escape for the / character so it can be used as a string lieteral.
+```(\/|-)``` separates the date string with a ```/``` or ```-``` and the ```\``` exists as an escape for the / character so it can be used as a string literal.
 
-Example 2 uses a grouping in the beginning to match any text before the : character in the string.  What matters is the is (on|off)line part of the string.
+Example 2 uses a grouping in the beginning to match any text before the ```:``` character in the string.  What matters is the is ```(on|off)line``` part of the string.
 
 ```(.*): is (off|on)line.```
 
-The .* is match any string until the grouping ends at literal character map ":" and then the rest of the regex match continues.
+The ```.*``` is match any string until the grouping ends at literal character map ```":"``` and then the rest of the regex match continues.
 
 ### Bracket Expressions
 
 Bracket references are intended to match specific characters, either a range of or specific characters.  It can also be used the reverse, and use a "not" clause as well.  These are not used in my examples, but will drop one here.
 
-The example ```[abc]``` will only match characters a, b, or c in any order.
+The example ```[abc]``` will only match characters ```a, b, or c``` in any order.
 ![](./img/image-4.png)
 
-In the above, 7 of 9 characters match because the "yz" in the last string did not meet the pattern requirements.
+In the above, 7 of 9 characters match because the ```"yz"``` in the last string did not meet the pattern requirements.
 
 Changing this to ```[a-z0-9]```, we can do letters or numbers.
 ![](./img/image-5.png)
 
-Note in the above 24 of 25 characters matched.  The exclamation point was not included in the bracket expression as it was just a-z and 0-9.
+Note in the above 24 of 25 characters matched.  The exclamation point was not included in the bracket expression as it was just ```a-z``` and ```0-9```.
 
 ### Greedy and Lazy Match
 
@@ -144,9 +145,9 @@ A lazy match will look for as few qualified matches as possible to fulfill the r
 
 ### Boundaries
 
-Not used in my examples, but a boundary (\b) is looking for specific word patters.
+Not used in my examples, but a boundary ```(\b)``` is looking for specific word patters.
 
-It can be used to find a specific word (by a \b on both ends), or beginning or substring of a word.
+It can be used to find a specific word (by a ```\b``` on both ends), or beginning or substring of a word.
 
 Examples:
 ```\btuna``` will find tuna and tunafish
@@ -170,7 +171,7 @@ An example with ```e(?=x)```:
 
 It will find exit and exiting, anything looking past the second character.  Because the second character is a "d", edit is disqualified.
 
-To flip this, doing a negative query by changing ?= to ?!, the results flip:
+To flip this, doing a negative query by changing ```?=``` to ```?!```, the results flip:
 ![](./img/image-9.png)
 
 Now, only edit is a match.
