@@ -81,13 +81,13 @@ If I wanted to do 2 or 4 digit years as in the past example, the following regex
 
 So either a 4 or 2 year date would be accepted: 
 
-![Alt text](image.png)
+![](./img/image.png)
 
 Same with Example 3, where it shows a user going ON line or OFF line.
 
 (.*): is (off|on)line.
 
-![Alt text](image-1.png)
+![](./img/image-1.png)
 
 ### Character Classes
 
@@ -101,11 +101,11 @@ Flags are a way to add paramerers into your search.  I will use a case insensiti
 
 To do a case insensitive search, use the (?i) before the text you are searching.  For example, the name Joe King in this search is case insensitive, so all 3 of these tests pass.
 
-![Alt text](image-2.png)
+![](./img/image-2.png)
 
 I can use grouping to ensure that only say, "Joe" is case insensitive.
 
-![Alt text](image-3.png)
+![](./img/image-3.png)
 
 > Note that only the last string was a match, the other 3 from previous were not.
 
@@ -128,12 +128,12 @@ Example 1 uses 2 groupings right from the beginning:
 Bracket references are intended to match specific characters, either a range of or specific characters.  It can also be used the reverse, and use a "not" clause as well.  These are not used in my examples, but will drop one here.
 
 The example [abc] will only match characters a, b, or c in any order.
-![Alt text](image-4.png)
+![](./img/image-4.png)
 
 In the above,7 matches because the "yz" in the last string did not meet the pattern requirements.
 
 Changing this to [a-z0-9], we can do letters or numbers.
-![Alt text](image-5.png)
+![](./img/image-5.png)
 
 Note in the above 24 of 25 characters matched.  The exclamation point was not included in the bracket expression.
 
@@ -153,10 +153,10 @@ It can be used to find a specific word (by a \b on both ends), or beginning or s
 
 Examples:
 \btuna will find tuna and tunafish
-![Alt text](image-6.png)
+![](./img/image-6.png)
 
 A trailing \b in \btuna\b will no longer match tunafish:
-![Alt text](image-7.png)
+![](./img/image-7.png)
 
 ### Back-references
 
@@ -169,12 +169,12 @@ For example, a back reference can look back from a closing ```</html>``` tag and
 There are no examples of this in the examples provided, but a look ahead or look behind qery (also known as look around) is matching the string around the regex.
 
 An example with e(?=x):
-![Alt text](image-8.png)
+![](./img/image-8.png)
 
 It will find exit and exiting, anything looking past the second character.  Because the second character is a "d", edit is disqualified.
 
 To flip this, doing a negative query by changing ?= to ?!, the results flip:
-![Alt text](image-9.png)
+![](./img/image-9.png)
 
 Now, only edit is a match.
 
