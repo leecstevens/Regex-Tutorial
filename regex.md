@@ -106,7 +106,6 @@ I can use grouping to ensure that only say, "Joe" is case insensitive.
 
 We have used grouping extensively already in this exercise.  Grouping is done inside parenthesis and can be combined with other functions like "OR".
 
-
 Example 1 uses 2 groupings right from the beginning:
 ```
 ^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
@@ -115,6 +114,11 @@ Example 1 uses 2 groupings right from the beginning:
 
 (\/|-) separates the date string with a / or - and the \ exists as an escape for the / character so it can be used as a string lieteral.
 
+Example 2 uses a grouping in the beginning to match any text before the : character in the string.  What matters is the is (on|off)line part of the string.
+
+```(.*): is (off|on)line.```
+
+The .* is match any string until the grouping ends at literal character map ":" and then the rest of the regex match continues.
 
 ### Bracket Expressions
 
@@ -123,7 +127,7 @@ Bracket references are intended to match specific characters, either a range of 
 The example ```[abc]``` will only match characters a, b, or c in any order.
 ![](./img/image-4.png)
 
-In the above,7 matches because the "yz" in the last string did not meet the pattern requirements.
+In the above, 7 of 9 characters match because the "yz" in the last string did not meet the pattern requirements.
 
 Changing this to ```[a-z0-9]```, we can do letters or numbers.
 ![](./img/image-5.png)
