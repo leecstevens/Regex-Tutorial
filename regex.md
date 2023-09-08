@@ -6,22 +6,28 @@ A regex, or "regular expression" is a method how you can match a pattern with a 
 
 ## Summary
 
-In this particulat example, I will be using this regex pattern to verify a line of text in a chat log:
+In this particulat example, I will be using this regex pattern to verify a line of text in a chat log.  This log file contains a variety of types of data.
 
-We will have a few examples:
+We will use 2 examples from this data:
 
 ### Example 1: A datetime example:
 ```
 ^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
 ```
-The above regex denotes a string in the file which will look like this:
-```[2023-09-08 12:22:10]```
+The above regex denotes a string in the file which will look like the following:
+```
+[Year-Month-Day Hour:Minute:Second]
+[2023-09-08 12:22:10]
+[2023-09-08 12:22]
+[23-09-08 12:22:10]
+[23-09-08 12:22]
+```
 
 ### Example 2: Simple parsing if a user is online or offline:
 ```
 (.*): is (off|on)line.
 ```
-The above is looking for a specific string whether a user has logged on or off, saying this isn't relevant to chat itself.
+The above is looking for a specific string after the ```:``` whether a user has logged on or off.  The use case for this would be if you find this line, to process it differently than others.
 
 The string looks like this:
 
@@ -113,6 +119,8 @@ Example 1 uses 2 groupings right from the beginning:
 ```
 ```(\d{4}|\d{2})``` combines looking for digits, but requiring either 4 or 2 depending on year type.
 
+> I also made the trailing grouping ```(:\d{2})?``` optional with the ```?``` after the last ```(:\d{2})``` in case the regex didn't contain the seconds at the end and stopped at minutes.
+
 ```(\/|-)``` separates the date string with a ```/``` or ```-``` and the ```\``` exists as an escape for the / character so it can be used as a string literal.
 
 Example 2 uses a grouping in the beginning to match any text before the ```:``` character in the string.  What matters is the is ```(on|off)line``` part of the string.
@@ -175,6 +183,12 @@ To flip this, doing a negative query by changing ```?=``` to ```?!```, the resul
 ![](./img/image-9.png)
 
 Now, only edit is a match.
+
+# Bonus
+
+## Detecting this regex with JavaScript
+
+
 
 ## Author
 
