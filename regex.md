@@ -187,6 +187,8 @@ Now, only edit is a match.
 # Bonus
 
 ## Detecting this regex with JavaScript
+> Included file: regex.js
+
 
 
 
