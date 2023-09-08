@@ -173,4 +173,6 @@ Now, only edit is a match.
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+This tutorial on regex brought to you by Lee Stevens [Repo](https://github.com/leecstevens).
+
+
