@@ -14,17 +14,9 @@ We will have a few examples:
 ```
 ^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
 The above regex denotes a string in the file which will look like this:
-[2023-09-08 12:33:10]
-```
-### Example 2: A parsing of a display and user name:
-```
-.*?\((.*)\):
+[2023-09-08 12:22:10]
 
-The above regex parses a display name (Joe King) and optionally user name (joeking).  The string looks like this:
-
-Joe King (joeking)
-```
-### Example 3: Simple parsing if a user is online or offline:
+### Example 2: Simple parsing if a user is online or offline:
 ```
 (.*): is (off|on)line.
 
@@ -59,7 +51,7 @@ In example 1: The ^ symbol represents the start.  The lack of a $ to end denotes
 
 ![](./img/ex17-01.jpg)
 
-> Examples 2 and 3 do not have anchors and are not required.
+> Example 2 does not have anchors and is not required.
 
 ![](./img/ex17-02.jpg)
 
@@ -83,7 +75,7 @@ So either a 4 or 2 year date would be accepted:
 
 ![](./img/image.png)
 
-Same with Example 3, where it shows a user going ON line or OFF line.
+Same with Example 2, where it shows a user going ON line or OFF line.
 
 (.*): is (off|on)line.
 
