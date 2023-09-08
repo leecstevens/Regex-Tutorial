@@ -155,11 +155,28 @@ Examples:
 \btuna will find tuna and tunafish
 ![Alt text](image-6.png)
 
-
+A trailing \b in \btuna\b will no longer match tunafish:
+![Alt text](image-7.png)
 
 ### Back-references
 
+These are not used in the examples provided, but a back reference can go back and match previously matched text in past groups.
+
+For example, a back reference can look back from a closing ```</html>``` tag and find the opening ```<html>``` tag.
+
 ### Look-ahead and Look-behind
+
+There are no examples of this in the examples provided, but a look ahead or look behind qery (also known as look around) is matching the string around the regex.
+
+An example with e(?=x):
+![Alt text](image-8.png)
+
+It will find exit and exiting, anything looking past the second character.  Because the second character is a "d", edit is disqualified.
+
+To flip this, doing a negative query by changing ?= to ?!, the results flip:
+![Alt text](image-9.png)
+
+Now, only edit is a match.
 
 ## Author
 
