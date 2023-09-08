@@ -13,19 +13,20 @@ We will have a few examples:
 ### Example 1: A datetime example:
 ```
 ^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
+```
 The above regex denotes a string in the file which will look like this:
 [2023-09-08 12:22:10]
 
 ### Example 2: Simple parsing if a user is online or offline:
 ```
 (.*): is (off|on)line.
-
+```
 The above is looking for a specific string whether a user has logged on or off, saying this isn't relevant to chat itself.
 
 The string looks like this:
 Joe King (joeking): is offline.
-```
-> I will be denoting the example in each of the below sections and how I use them.
+
+> I will be denoting the example in each of the below sections and how I used them.
 
 ## Table of Contents
 
@@ -105,29 +106,29 @@ I can use grouping to ensure that only say, "Joe" is case insensitive.
 
 We have used grouping extensively already in this exercise.  Grouping is done inside parenthesis and can be combined with other functions like "OR".
 
-```
+
 Example 1 uses 2 groupings right from the beginning:
-
+```
 ^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
-
+```
 (\d{4}|\d{2}) combines looking for digits, but requiring either 4 or 2 depending on year type.
 
 (\/|-) separates the date string with a / or - and the \ exists as an escape for the / character so it can be used as a string lieteral.
-```
+
 
 ### Bracket Expressions
 
 Bracket references are intended to match specific characters, either a range of or specific characters.  It can also be used the reverse, and use a "not" clause as well.  These are not used in my examples, but will drop one here.
 
-The example [abc] will only match characters a, b, or c in any order.
+The example ```[abc]``` will only match characters a, b, or c in any order.
 ![](./img/image-4.png)
 
 In the above,7 matches because the "yz" in the last string did not meet the pattern requirements.
 
-Changing this to [a-z0-9], we can do letters or numbers.
+Changing this to ```[a-z0-9]```, we can do letters or numbers.
 ![](./img/image-5.png)
 
-Note in the above 24 of 25 characters matched.  The exclamation point was not included in the bracket expression.
+Note in the above 24 of 25 characters matched.  The exclamation point was not included in the bracket expression as it was just a-z and 0-9.
 
 ### Greedy and Lazy Match
 
@@ -144,10 +145,10 @@ Not used in my examples, but a boundary (\b) is looking for specific word patter
 It can be used to find a specific word (by a \b on both ends), or beginning or substring of a word.
 
 Examples:
-\btuna will find tuna and tunafish
+```\btuna``` will find tuna and tunafish
 ![](./img/image-6.png)
 
-A trailing \b in \btuna\b will no longer match tunafish:
+A trailing \b in ```\btuna\b``` will no longer match tunafish:
 ![](./img/image-7.png)
 
 ### Back-references
@@ -160,7 +161,7 @@ For example, a back reference can look back from a closing ```</html>``` tag and
 
 There are no examples of this in the examples provided, but a look ahead or look behind qery (also known as look around) is matching the string around the regex.
 
-An example with e(?=x):
+An example with ```e(?=x)```:
 ![](./img/image-8.png)
 
 It will find exit and exiting, anything looking past the second character.  Because the second character is a "d", edit is disqualified.
