@@ -4,33 +4,9 @@ In this document, I will go over an example of a regex expression and how I brok
 
 A regex, or "regular expression" is a method how you can match a pattern with a string.  It is meant to serve two main uses: 1. To verify input data (like email address or social security number), and 2. in code, verifying a string matches a specific pattern.
 
-## Summary
-
-In this particulat example, I will be using this regex pattern to verify a line of text in a chat log:
-
-We will have a few examples:
-
-### Example 1: A datetime example:
-```
-^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
-```
-The above regex denotes a string in the file which will look like this:
-```[2023-09-08 12:22:10]```
-
-### Example 2: Simple parsing if a user is online or offline:
-```
-(.*): is (off|on)line.
-```
-The above is looking for a specific string whether a user has logged on or off, saying this isn't relevant to chat itself.
-
-The string looks like this:
-
-```Joe King (joeking): is offline.```
-
-> I will be denoting the example in each of the below sections and how I used them.
-
 ## Table of Contents
 
+- [Summary](#summary)
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
 - [OR Operator](#or-operator)
@@ -42,6 +18,41 @@ The string looks like this:
 - [Boundaries](#boundaries)
 - [Back-references](#back-references)
 - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+- [Examples in JavaScript and Python](#bonus-code)
+
+# Summary
+
+In this particulat example, I will be using this regex pattern to verify a line of text in a chat log.  This log file contains a variety of types of data.
+
+## As a bonus
+> I will be adding JavaScript and Python code at the end to demonstrate and test the regex that is being presented at no additional charge to you.
+
+We will use 2 examples from this data:
+
+### Example 1: A datetime example:
+```
+^\[(\d{4}|\d{2})(\/|-)\d{2}(\/|-)\d{2} \d{2}:\d{2}(:\d{2})?]
+```
+The above regex denotes a string in the file which will look like the following:
+```
+[Year-Month-Day Hour:Minute:Second]
+[2023-09-08 12:22:10]
+[2023-09-08 12:22]
+[23-09-08 12:22:10]
+[23-09-08 12:22]
+```
+
+### Example 2: Simple parsing if a user is online or offline:
+```
+(.*): is (off|on)line.
+```
+The above is looking for a specific string after the ```:``` whether a user has logged on or off.  The use case for this would be if you find this line, to process it differently than others.
+
+The string looks like this:
+
+```Joe King (joeking): is offline.```
+
+> I will be denoting the example in each of the below sections and how I used them.
 
 ## Regex Components
 
@@ -113,6 +124,8 @@ Example 1 uses 2 groupings right from the beginning:
 ```
 ```(\d{4}|\d{2})``` combines looking for digits, but requiring either 4 or 2 depending on year type.
 
+> I also made the trailing grouping ```(:\d{2})?``` optional with the ```?``` after the last ```(:\d{2})``` in case the regex didn't contain the seconds at the end and stopped at minutes.
+
 ```(\/|-)``` separates the date string with a ```/``` or ```-``` and the ```\``` exists as an escape for the / character so it can be used as a string literal.
 
 Example 2 uses a grouping in the beginning to match any text before the ```:``` character in the string.  What matters is the is ```(on|off)line``` part of the string.
@@ -175,6 +188,21 @@ To flip this, doing a negative query by changing ```?=``` to ```?!```, the resul
 ![](./img/image-9.png)
 
 Now, only edit is a match.
+
+# Bonus Code
+
+## Detecting this regex with JavaScript
+> Included file: regex.js
+
+![](./img/regex-java.jpg)
+
+Using the above examples, the only test that would fail this regex is the second.  Why?  Becuse it is missing the required brackets.
+
+## Detecting this regex with Python
+> Included file: regex.py
+
+![](./img/regex-python.jpg)
+Same as the past example, but written in Python.  The second example fails as it is missing the brackets.
 
 ## Author
 
